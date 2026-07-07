@@ -1,29 +1,29 @@
-# SDN-Traffic-Monitor
-A network monitoring dashboard that visualizes traffic flow and detects anomalies using OpenDaylight and Mininet.
+# SDN-Based Network Traffic Monitoring & Visualization System
 
-# 🌐 SDN Network Traffic Visualizer
+## 📌 Project Overview
+This project implements a centralized network monitoring system using Software-Defined Networking (SDN) principles. By decoupling the control plane from the data plane, this system collects real-time traffic statistics and visualizes them to detect network anomalies, such as sudden bandwidth spikes or DDoS simulations.
 
-A Software Defined Networking (SDN) project designed to monitor, analyze, and visualize network traffic in real-time. This system leverages the **OpenDaylight (ODL)** controller to extract telemetry data from a simulated network topology.
+## 🏗️ Architecture
+* **Infrastructure Layer (Data Plane):** Mininet (Virtual Switches & Hosts)
+* **Control Layer (Brain):** OpenDaylight Controller (Titanium Release)
+* **Middleware (The Bridge):** Custom Python Exporter (REST API to Prometheus)
+* **Storage & Visualization:** Prometheus (TSDB) & Grafana
 
-## 🎯 Objectives
-* **Real-Time Monitoring:** continuously track packet flows and bandwidth usage across network switches.
-* **Anomaly Detection:** Identify sudden spikes or drops in traffic that may indicate network failures or attacks.
-* **Visualization:** Convert raw network data into actionable graphs using Grafana.
+![System Architecture](images/architecture.png) *(Add a diagram or photo of your handwritten architecture notes here)*
 
-## 🏗️ Architecture & Tools
-* **Controller:** OpenDaylight (ODL) - Manages the flow rules and network state.
-* **Simulation:** Mininet - Creates the virtual network topology (switches and hosts).
-* **Data Collection:** Python scripts polling ODL Northbound APIs.
-* **Visualization:** Grafana - Displays bandwidth, packet loss, and latency metrics.
+## 🚀 Technologies Used
+* **Ubuntu Linux**
+* **Mininet** (Network Emulator)
+* **OpenDaylight (ODL)** (SDN Controller)
+* **OpenFlow 1.3** (Southbound Protocol)
+* **Python 3** (`requests`, `prometheus_client`)
+* **Prometheus & Grafana**
 
-## 📊 How It Works
-1.  **Simulation:** Mininet generates a custom network topology.
-2.  **Control:** OpenDaylight connects to the switches via OpenFlow.
-3.  **Extraction:** A Python middleware script queries ODL for statistics (Flow stats, Port stats).
-4.  **Display:** Data is pushed to a dashboard (Grafana) for live monitoring.
+---
 
-## 📝 Usage
-* Start the ODL Karaf distribution.
-* Run the Mininet topology script: `sudo mn --controller=remote...`
-* Execute the Python monitoring script to begin fetching stats.
-* Access the Grafana dashboard at `http://localhost:3000`.
+## ⚙️ Installation & Setup
+
+### 1. Network Simulation (Mininet)
+Start the virtual network with 1 switch and 3 hosts, connecting remotely to the ODL controller via OpenFlow 1.3:
+```bash
+sudo mn --controller=remote,ip=127.0.0.1,port=6633 --topo=single,3 --switch=ovsk,protocols=OpenFlow13
