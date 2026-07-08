@@ -9,7 +9,7 @@ This project implements a centralized network monitoring system using Software-D
 * **Middleware (The Bridge):** Custom Python Exporter (REST API to Prometheus)
 * **Storage & Visualization:** Prometheus (TSDB) & Grafana
 
-![System Architecture](images/architecture.png) *(Add a diagram or photo of your handwritten architecture notes here)*
+![System Architecture](images/architecture.png) 
 
 ## 🚀 Technologies Used
 * **Ubuntu Linux**
@@ -60,4 +60,4 @@ To verify the system, a high-bandwidth UDP flood was simulated using `iperf` bet
 The custom Grafana dashboard successfully captured the real-time anomaly, as seen in the traffic spike below:
 
 ![Grafana Spike](images/grafana_ddos_spike.png) 
-*(Note: Replace this image path with your actual Grafana screenshot)*
+
